@@ -2,7 +2,7 @@
 import  java.util.*;
 
 public class Stringss{
-
+	
 	public static void main(String[] args) {
 		String str1="CDAC";
 		System.out.println(str1);
