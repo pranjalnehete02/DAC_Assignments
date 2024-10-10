@@ -33,7 +33,7 @@ class Utils {
 public class ForEach {
     public static void main(String[] args) {
         Collection<Student> students = new ArrayList<>();
-        Collection<Student> newStudents = List.of(new Student("Alice", 20), new Student("Bob", 22));
+        Collection<Student> newStudents = List.of(new Student("OMex", 22), new Student("Harsh Bhai", 23));
 
         Utils.addAll(students, newStudents);
         

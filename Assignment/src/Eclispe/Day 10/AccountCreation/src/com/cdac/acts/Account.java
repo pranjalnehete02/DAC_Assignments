@@ -1,0 +1,95 @@
+package com.cdac.acts;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Account {
+    private String accNo;         // Account Number
+    private String accName;       // Account Holder Name
+    private LocalDate dateOfOpening; // Date of Opening
+    private double balance;        // Account Balance
+
+    // Constructor
+    public Account(String accNo, String accName, LocalDate dateOfOpening, double initialBalance) {
+        this.accNo = accNo;
+        this.accName = accName;
+        this.dateOfOpening = dateOfOpening;
+        this.balance = initialBalance;
+    }
+
+    // Getters
+    public String getAccNo() {
+        return accNo;
+    }
+
+    public String getAccName() {
+        return accName;
+    }
+
+    public LocalDate getDateOfOpening() {
+        return dateOfOpening;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    // Setters
+    public void setAccNo(String accNo) {
+        this.accNo = accNo;
+    }
+
+    public void setAccName(String accName) {
+        this.accName = accName;
+    }
+
+    public void setDateOfOpening(LocalDate dateOfOpening) {
+        this.dateOfOpening = dateOfOpening;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    // Method to display account details
+    public String displayAccountDetails() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return String.format("Account Number: %s%nAccount Name: %s%nDate of Opening: %s%nBalance: %.2f",
+                accNo, accName, dateOfOpening.format(formatter), balance);
+    }
+
+    // Method to deposit amount
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.printf("Deposited: %.2f%n", amount);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    // Method to withdraw amount
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.printf("Withdrawn: %.2f%n", amount);
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Create a new account
+        Account account = new Account("12345", "John Doe", LocalDate.of(2023, 10, 1), 1000.00);
+
+        // Display account details
+        System.out.println(account.displayAccountDetails());
+
+        // Deposit and withdraw
+        account.deposit(500);
+        account.withdraw(200);
+
+        // Display updated account details
+        System.out.println(account.displayAccountDetails());
+    }
+}
